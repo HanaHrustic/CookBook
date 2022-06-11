@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CookBook.DAL/1.0.0": {
+        "dependencies": {
+          "CookBook.Model": "1.0.0"
+        },
+        "runtime": {
+          "CookBook.DAL.dll": {}
+        }
+      },
+      "CookBook.Model/1.0.0": {
+        "runtime": {
+          "CookBook.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CookBook.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CookBook.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
