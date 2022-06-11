@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace CookBook.Model
 {
-    public class Step
+    public class RecipeIngredient
     {
         [Key]
         public int Id { get; set; }
-        public int Number { get; set; }
-        public string Description { get; set; }
 
         [ForeignKey(nameof(Recipe))]
         public int RecipeId { get; set; }
+
+        [ForeignKey(nameof(Ingredient))]
+        public int IngredientId { get; set; }
+
+        public int amount { get; set; }
+
+        [ForeignKey(nameof(Size))]
+        public int SizeId { get; set; }
     }
 }

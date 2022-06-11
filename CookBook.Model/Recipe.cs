@@ -15,5 +15,8 @@ namespace CookBook.Model
         public string Author { get; set; }
         public int Difficulty { get; set; }
         public int Minutes  { get; set; }
+
+        public virtual Step Step { get; set; }
+        public virtual RecipeIngredient RecipeIngredient { get; set; }
     }
 }
