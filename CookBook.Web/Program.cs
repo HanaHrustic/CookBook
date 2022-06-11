@@ -1,7 +1,15 @@
+using CookBook.DAL;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<CookBookDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("CookBookDbContext"),
+            opt => opt.MigrationsAssembly("CookBook.DAL")));
 
 var app = builder.Build();
 
