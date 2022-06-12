@@ -17,5 +17,6 @@ namespace CookBook.DAL
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Step> Steps { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

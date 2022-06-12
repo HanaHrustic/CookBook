@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj": {}
+    "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj": {}
   },
   "projects": {
-    "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj": {
+    "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj",
+        "projectUniqueName": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj",
         "projectName": "CookBook.Model",
-        "projectPath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj",
+        "projectPath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.Model\\CookBook.Model.csproj",
         "packagesPath": "C:\\Users\\patri\\.nuget\\packages\\",
-        "outputPath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.Model\\obj\\",
+        "outputPath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\patri\\AppData\\Roaming\\NuGet\\NuGet.Config",

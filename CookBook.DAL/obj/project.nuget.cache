@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xpCOA0tGzPnqMb4BHXjP4Jdoj9kT+/jcaQ3lCACTXA/3GrnT4SVL+g4GjkvJUEESFcmWZPPoi6Bb56hKXtlmtA==",
+  "dgSpecHash": "mfGkPS0n8Rd3fNgPvyxENVQ3LGOUu/4viSYALEmDZ1JYJvd9DmP0FumCPk1vxc+RNzNvDTewKgSgl0L7X2yv8w==",
   "success": true,
-  "projectFilePath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\Seminar - CookBook\\CookBook\\CookBook.DAL\\CookBook.DAL.csproj",
+  "projectFilePath": "D:\\Faks\\Ljetni 2021-2022\\ASP.NET\\CookBook\\CookBook\\CookBook.DAL\\CookBook.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\patri\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\patri\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

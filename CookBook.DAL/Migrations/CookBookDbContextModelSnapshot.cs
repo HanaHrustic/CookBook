@@ -65,6 +65,37 @@ namespace CookBook.DAL.Migrations
                     b.ToTable("Recipes");
                 });
 
+            modelBuilder.Entity("CookBook.Model.RecipeIngredient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("RecipeIngredients");
+                });
+
             modelBuilder.Entity("CookBook.Model.Size", b =>
                 {
                     b.Property<int>("Id")
@@ -90,16 +121,72 @@ namespace CookBook.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("number")
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RecipeId");
+
                     b.ToTable("Steps");
+                });
+
+            modelBuilder.Entity("CookBook.Model.RecipeIngredient", b =>
+                {
+                    b.HasOne("CookBook.Model.Ingredient", "Ingredient")
+                        .WithMany("RecipeIngredients")
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CookBook.Model.Recipe", null)
+                        .WithMany("RecipeIngredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CookBook.Model.Size", "Size")
+                        .WithMany("RecipeIngredient")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("CookBook.Model.Step", b =>
+                {
+                    b.HasOne("CookBook.Model.Recipe", null)
+                        .WithMany("Steps")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CookBook.Model.Ingredient", b =>
+                {
+                    b.Navigation("RecipeIngredients");
+                });
+
+            modelBuilder.Entity("CookBook.Model.Recipe", b =>
+                {
+                    b.Navigation("RecipeIngredients");
+
+                    b.Navigation("Steps");
+                });
+
+            modelBuilder.Entity("CookBook.Model.Size", b =>
+                {
+                    b.Navigation("RecipeIngredient");
                 });
 #pragma warning restore 612, 618
         }

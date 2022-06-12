@@ -18,10 +18,12 @@ namespace CookBook.Model
 
         [ForeignKey(nameof(Ingredient))]
         public int IngredientId { get; set; }
+        public Ingredient? Ingredient { get; set; }
 
-        public int amount { get; set; }
+        public int Amount { get; set; }
 
         [ForeignKey(nameof(Size))]
         public int SizeId { get; set; }
+        public Size? Size { get; set; }
     }
 }

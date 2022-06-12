@@ -13,6 +13,6 @@ namespace CookBook.Model
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual RecipeIngredient RecipeIngredient { get; set; }
+        public virtual List<RecipeIngredient> RecipeIngredient { get; set; }
     }
 }

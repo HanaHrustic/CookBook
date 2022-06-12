@@ -10,3 +10,15 @@ D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.Model\obj\
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\refint\CookBook.Model.dll
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.pdb
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\ref\CookBook.Model.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\bin\Debug\net6.0\CookBook.Model.deps.json
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\bin\Debug\net6.0\CookBook.Model.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\bin\Debug\net6.0\CookBook.Model.pdb
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.csproj.AssemblyReference.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.AssemblyInfoInputs.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.AssemblyInfo.cs
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.csproj.CoreCompileInputs.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\refint\CookBook.Model.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\CookBook.Model.pdb
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.Model\obj\Debug\net6.0\ref\CookBook.Model.dll

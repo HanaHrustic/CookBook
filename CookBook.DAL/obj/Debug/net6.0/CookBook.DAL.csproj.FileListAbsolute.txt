@@ -13,3 +13,18 @@ D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.DAL\obj\De
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\refint\CookBook.DAL.dll
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.pdb
 D:\Faks\Ljetni 2021-2022\ASP.NET\Seminar - CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\ref\CookBook.DAL.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\bin\Debug\net6.0\CookBook.DAL.deps.json
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\bin\Debug\net6.0\CookBook.DAL.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\bin\Debug\net6.0\CookBook.DAL.pdb
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\bin\Debug\net6.0\CookBook.Model.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\bin\Debug\net6.0\CookBook.Model.pdb
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.csproj.AssemblyReference.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.AssemblyInfoInputs.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.AssemblyInfo.cs
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.csproj.CoreCompileInputs.cache
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.csproj.CopyComplete
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\refint\CookBook.DAL.dll
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\CookBook.DAL.pdb
+D:\Faks\Ljetni 2021-2022\ASP.NET\CookBook\CookBook\CookBook.DAL\obj\Debug\net6.0\ref\CookBook.DAL.dll

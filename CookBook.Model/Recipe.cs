@@ -16,7 +16,7 @@ namespace CookBook.Model
         public int Difficulty { get; set; }
         public int Minutes  { get; set; }
 
-        public virtual Step Step { get; set; }
-        public virtual RecipeIngredient RecipeIngredient { get; set; }
+        public virtual List<Step> Steps { get; set; }
+        public virtual List<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }
