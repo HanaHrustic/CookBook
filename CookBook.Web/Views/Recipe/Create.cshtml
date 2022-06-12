@@ -1,0 +1,12 @@
+﻿@model CookBook.Model.Recipe
+@{
+	ViewData["Title"] = "Adding new recipe";
+}
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<partial name="_CreateOrEdit" />
+		</form>
+	</div>
+</div>

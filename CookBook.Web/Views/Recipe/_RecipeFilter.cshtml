@@ -1,0 +1,22 @@
+﻿@using CookBook.Web.Models
+@model RecipeFilterModel
+
+<form action="@Url.Action("Search")" method="post">
+	<div class="row">
+		<div class="col">
+			<input asp-for="Title" class="form-control" type="text" placeholder="Title" />
+		</div>
+		<div class="col">
+			<input asp-for="Author" class="form-control" type="text" placeholder="Author" />
+		</div>
+		<div class="col">
+			<input asp-for="Difficulty" class="form-control" type="text" placeholder="Difficulty" value=""/>
+		</div>
+		<div class="col">
+			<input asp-for="Minutes" class="form-control" type="text" placeholder="Minutes" value=""/>
+		</div>
+		<div class="col">
+			<button type="button" id="submitButton" class="btn btn-outline-info">Search</button>
+		</div>
+	</div>
+</form>

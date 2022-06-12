@@ -42,7 +42,7 @@ namespace CookBook.Web.Controllers
                 .ThenInclude(recipeIngredient => recipeIngredient.Size)
                 .Include(recipe => recipe.Steps)
                 .Select(recipe => recipeToRecipeDTO(recipe))
-                .FirstOrDefault();
+                .First();
         }
 
         [Route("pretraga/{q}")]
@@ -73,6 +73,48 @@ namespace CookBook.Web.Controllers
                 .ThenInclude(recipeIngredient => recipeIngredient.Size)
                 .Include(recipe => recipe.Steps)
                 .First());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<ActionResult<RecipeDTO>> Put(int id, [FromBody] Recipe model)
+        {
+            Recipe recipeToChange = this._dbContext.Recipes
+                .Where(recipe => recipe.Id.Equals(id))
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Ingredient)
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Size)
+                .Include(recipe => recipe.Steps)
+                .First();
+
+            if (recipeToChange != null)
+            {
+                recipeToChange.Title = model.Title;
+                recipeToChange.Author = model.Author;
+                recipeToChange.Difficulty = model.Difficulty;
+                recipeToChange.Minutes = model.Minutes;
+                recipeToChange.Steps = model.Steps;
+                recipeToChange.RecipeIngredients = model.RecipeIngredients;
+            }
+
+            this._dbContext.SaveChanges();
+
+            return recipeToRecipeDTO(recipeToChange);
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Recipe recipe = this._dbContext.Recipes
+                .Where(recipe => recipe.Id.Equals(id))
+                .First();
+
+            this._dbContext.Recipes.Remove(recipe);
+            this._dbContext.SaveChanges();
+
+            return Ok();
         }
 
         private static RecipeDTO recipeToRecipeDTO(Recipe recipe)
@@ -127,20 +169,5 @@ namespace CookBook.Web.Controllers
                 Name = ingredient.Name
             };
         }
-
-        /*private static RecipeDTO recipeCommandToRecipe(RecipeCommand recipeCommand)
-        {
-            return new Recipe()
-            {
-                Title = recipeCommand.Title,
-                Author = recipeCommand.Author,
-                Difficulty = recipeCommand.Difficulty,
-                Minutes = recipeCommand.Minutes,
-                Step = recipeCommand.Step != null ? new StepCommand()
-                {
-
-                } : null
-            }
-        }*/
     }
 }

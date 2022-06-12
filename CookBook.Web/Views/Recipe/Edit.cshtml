@@ -1,0 +1,13 @@
+﻿@model CookBook.Model.Recipe
+
+@{
+	ViewData["Title"] = "Edit recipe";
+}
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<input type="hidden" asp-for="Id" />
+			<partial name="_CreateOrEdit" />
+		</form>
+	</div>
+</div>

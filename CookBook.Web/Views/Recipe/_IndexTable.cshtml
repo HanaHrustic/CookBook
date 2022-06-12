@@ -1,0 +1,25 @@
+﻿<table style="margin-top: 20px;" class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Difficulty</th>
+			<th>Minutes</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Title</td>
+				<td>@item.Author</td>
+				<td>@item.Difficulty</td>
+				<td>@item.Minutes</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">[edit]</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
