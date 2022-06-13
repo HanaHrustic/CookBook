@@ -33,15 +33,15 @@ namespace CookBook.Web.Controllers
         public IActionResult Details(int? id = null)
         {
             var recipe = this._dbContext.Recipes
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Ingredient)
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Size)
+                .Include(recipe => recipe.Steps)
                 .Where(p => p.Id == id)
                 .FirstOrDefault();
 
             return View(recipe);
-        }
-
-        public IActionResult Explore()
-        {
-            return View();
         }
 
         public async Task<IActionResult> Search(RecipeFilterModel filter)
@@ -93,7 +93,17 @@ namespace CookBook.Web.Controllers
         [ActionName(nameof(Edit))]
         public IActionResult Edit(int id)
         {
-            var model = this._dbContext.Recipes.FirstOrDefault(c => c.Id == id);
+            var model = this._dbContext.Recipes
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Ingredient)
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Size)
+                .Include(recipe => recipe.Steps)
+                .FirstOrDefault(c => c.Id == id);
+
+            ViewBag.Ingredients = this._dbContext.Ingredients.ToList();
+            ViewBag.Sizes = this._dbContext.Sizes.ToList();
+
             return View(model);
         }
 
@@ -113,6 +123,8 @@ namespace CookBook.Web.Controllers
             recipe.Author = model.Author;
             recipe.Difficulty = model.Difficulty;
             recipe.Minutes = model.Minutes;
+            recipe.Steps = model.Steps;
+            recipe.RecipeIngredients = model.RecipeIngredients;
 
             _dbContext.SaveChanges();
             return RedirectToAction("Index");

@@ -36,6 +36,24 @@
 			<dd>
 				@Html.DisplayFor(model => model.Minutes)
 			</dd>
+			<dt>
+				Ingredients:
+			</dt>
+			@foreach (var recipeIngredient in Model.RecipeIngredients)
+			{
+				<dd>
+					@recipeIngredient.Ingredient?.Name
+				</dd>
+			}
+			<dt>
+				Steps:
+			</dt>
+			@foreach (var step in Model.Steps)
+			{
+				<dd>
+					@step.Description
+				</dd>
+			}
 		</dl>
 
 		<div>

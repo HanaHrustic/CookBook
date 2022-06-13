@@ -8,6 +8,66 @@
 		<form asp-action="Edit">
 			<input type="hidden" asp-for="Id" />
 			<partial name="_CreateOrEdit" />
+			<fieldset>
+				<div class="form-group">
+					<p>Steps:</p>
+					<div class="form-group">
+						@for(int i = 0; i < Model.Steps.Count(); i++)
+						{
+							<label asp-for="Steps" class="control-label">Step:</label>
+							<input type="hidden" name="@("Steps[" + i + "].Number")" value="@Model.Steps[i].Number" class="form-control"/>
+							<input type="text" name="@("Steps[" + i + "].Description")" value="@Model.Steps[i].Description" class="form-control" />
+						}
+					</div>
+					<div id="stepsForm" class="form-group">
+						<label asp-for="Steps" class="control-label">Step:</label>
+						<input type="hidden" name="@("Steps[" + Model.Steps.Count() + "].Number")" value="@(Model.Steps.Count() + 1)" class="form-control"/>
+						<input type="text" name="@("Steps[" + Model.Steps.Count() + "].Description")" class="form-control" />
+						<button type="button" id="addButton" class="btn btn-outline">Add another</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<p>Ingredients:</p>
+					<div class="form-group">
+						@for(int i = 0; i < Model.RecipeIngredients.Count(); i++)
+						{
+							<label class="control-label">Ingredients:</label>
+							<select name="@("RecipeIngredients[" + i + "].IngredientId")">
+								@foreach (var ingredient in ViewBag.Ingredients){
+									<option value="@ingredient.Id" selected="@(Model.RecipeIngredients[i].IngredientId == ingredient.Id ?? null)">@ingredient.Name</option>
+								}
+							</select>
+							<input type="text" name="@("RecipeIngredients[" + i + "].Amount")" class="form-control" value="@Model.RecipeIngredients[i].Amount"/>
+							<select name="@("RecipeIngredients[" + i + "].SizeId")">
+								@foreach (var size in ViewBag.Sizes){
+									<option value="@size.Id" selected="@(Model.RecipeIngredients[i].SizeId == size.Id ?? null)">@size.Name</option>
+								}
+							</select>
+						}
+					</div>
+					<div id="ingredientForm" class="form-group">
+						<label class="control-label">Ingredients:</label>
+						<select name="@("RecipeIngredients[" + Model.RecipeIngredients.Count() + "].IngredientId")">
+							@foreach (var ingredient in ViewBag.Ingredients){
+								<option value="@ingredient.Id">@ingredient.Name</option>
+							}
+						</select>
+						<input type="text" name="@("RecipeIngredients[" + Model.RecipeIngredients.Count() + "].Amount")" class="form-control" />
+						<select name="@("RecipeIngredients[" + Model.RecipeIngredients.Count() + "].SizeId")">
+							@foreach (var size in ViewBag.Sizes){
+								<option value="@size.Id">@size.Name</option>
+							}
+						</select>
+						<button type="button" id="addIngredientButton" class="btn btn-outline">Add another</button>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-outline-success" />
+			</div>
 		</form>
 	</div>
 </div>
@@ -22,6 +82,33 @@
 					success: function(result){
 						$("#tableWrapper").html(result);
 				}});
+			});
+			$("#addButton").click(function(){
+				var newFields = document.getElementById('stepsForm').cloneNode(true);
+				var stepCount = $("input[name*=Number]").length;
+				newFields.id = '';
+				newFields.style.display = 'block';
+				var newField = newFields.childNodes;
+				newField[3].setAttribute("name", "Steps[" + stepCount + "].Number");
+				console.log(stepCount);
+				console.log(newField);
+				newField[3].setAttribute("value", stepCount + 1);
+				newField[5].setAttribute("name", "Steps[" + stepCount + "].Description");
+				var insertHere = document.getElementById('stepsForm');
+				insertHere.parentNode.insertBefore(newFields,insertHere.nextSibling);
+			});
+			$("#addIngredientButton").click(function(){
+				var newFields = document.getElementById('ingredientForm').cloneNode(true);
+				var ingredientCount = $("input[name*=Amount]").length;
+				newFields.id = '';
+				newFields.style.display = 'block';
+				var newField = newFields.childNodes;
+				console.log(newField);
+				newField[3].setAttribute("name", "RecipeIngredients[" + ingredientCount + "].IngredientId");
+				newField[5].setAttribute("name", "RecipeIngredients[" + ingredientCount + "].Amount");
+				newField[7].setAttribute("name", "RecipeIngredients[" + ingredientCount + "].SizeId");
+				var insertHere = document.getElementById('ingredientForm');
+				insertHere.parentNode.insertBefore(newFields,insertHere.nextSibling);
 			});
 		});
 	</script>
