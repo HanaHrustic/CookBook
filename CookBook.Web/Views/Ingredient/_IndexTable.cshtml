@@ -1,10 +1,7 @@
 ﻿<table style="margin-top: 20px;" class="table table-condensed">
 	<thead>
 		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Difficulty</th>
-			<th>Minutes</th>
+			<th>Name</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -13,15 +10,14 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td><a asp-action="Details" asp-route-id="@item.Id">@item.Title</a></td>
-				<td>@item.Author</td>
-				<td>@item.Difficulty</td>
-				<td>@item.Minutes</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+				</td>
 				<td>
 					<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline">Edit</a>
 				</td>
 				<td>
-					<input type="hidden" id="txtRecipeId" value="@item.Id">
+					<input type="hidden" id="txtIngredientId" value="@item.Id">
 					<button type="button" id="deleteButton" class="btn btn-outline">Delete</button>
 				</td>
 			</tr>

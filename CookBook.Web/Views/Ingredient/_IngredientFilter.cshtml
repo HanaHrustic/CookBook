@@ -1,0 +1,13 @@
+﻿@using CookBook.Web.Models
+@model IngredientFilterModel
+
+<form action="@Url.Action("Search")" method="post">
+	<div class="row">
+		<div class="col">
+			<input asp-for="Name" class="form-control" type="text" placeholder="Name" />
+		</div>
+		<div class="col">
+			<button type="button" id="submitButton" class="btn btn-outline-info">Search</button>
+		</div>
+	</div>
+</form>

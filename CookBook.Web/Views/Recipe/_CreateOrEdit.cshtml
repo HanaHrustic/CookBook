@@ -17,6 +17,40 @@
 	<input asp-for="Minutes" class="form-control" />
 </div>
 
+<fieldset>
+	<div class="form-group">
+		<p>Steps:</p>
+		<div id="stepsForm" class="form-group">
+			<label asp-for="Steps" class="control-label">Step:</label>
+			<input type="hidden" name="Steps[0].Number" value="1" class="form-control"/>
+			<input type="text" name="Steps[0].Description" class="form-control" />
+			<button type="button" id="addButton" class="btn btn-outline">Add another</button>
+		</div>
+	</div>
+</fieldset>
+
+<fieldset>
+	<div class="form-group">
+		<p>Ingredients:</p>
+		<div id="ingredientForm" class="form-group">
+			<label class="control-label">Ingredients:</label>
+			<select name="RecipeIngredients[0].IngredientId">
+				@foreach (var ingredient in ViewBag.Ingredients){
+					<option value="@ingredient.Id">@ingredient.Name</option>
+				}
+			</select>
+			<input type="text" name="RecipeIngredients[0].Amount" class="form-control" />
+			<select name="RecipeIngredients[0].SizeId">
+				@foreach (var size in ViewBag.Sizes){
+					<option value="@size.Id">@size.Name</option>
+				}
+			</select>
+			<button type="button" id="addIngredientButton" class="btn btn-outline">Add another</button>
+		</div>
+	</div>
+</fieldset>
+
+
 <div class="form-group">
-	<input type="submit" value="Spremi" class="btn btn-outline-success" />
+	<input type="submit" value="Save" class="btn btn-outline-success" />
 </div>

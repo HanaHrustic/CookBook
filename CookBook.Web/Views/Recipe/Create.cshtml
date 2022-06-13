@@ -10,3 +10,35 @@
 		</form>
 	</div>
 </div>
+
+@section scripts{
+	<script>
+		var counter = 0;
+		$("#addButton").click(function(){
+			counter++;
+			var newFields = document.getElementById('stepsForm').cloneNode(true);
+			newFields.id = '';
+			newFields.style.display = 'block';
+			var newField = newFields.childNodes;
+			newField[3].setAttribute("name", "Steps[" + counter + "].Number");
+			newField[3].setAttribute("value", counter + 1);
+			newField[5].setAttribute("name", "Steps[" + counter + "].Description");
+			var insertHere = document.getElementById('stepsForm');
+			insertHere.parentNode.insertBefore(newFields,insertHere.nextSibling);
+		});
+		var ingredientCounter = 0;
+		$("#addIngredientButton").click(function(){
+			ingredientCounter++;
+			var newFields = document.getElementById('ingredientForm').cloneNode(true);
+			newFields.id = '';
+			newFields.style.display = 'block';
+			var newField = newFields.childNodes;
+			console.log(newField);
+			newField[3].setAttribute("name", "RecipeIngredient[" + ingredientCounter + "].IngredientId");
+			newField[5].setAttribute("name", "RecipeIngredient[" + ingredientCounter + "].Amount");
+			newField[7].setAttribute("name", "RecipeIngredient[" + ingredientCounter + "].SizeId");
+			var insertHere = document.getElementById('ingredientForm');
+			insertHere.parentNode.insertBefore(newFields,insertHere.nextSibling);
+		});
+	</script>
+}

@@ -1,14 +1,14 @@
 ﻿@using CookBook.Model
 @using CookBook.Web.Models
-@model List<Recipe>
+@model List<Ingredient>
 
 @{
-	ViewData["Title"] = "Search Recipes";
+	ViewData["Title"] = "Search Ingredients";
 }
 
-<h1>Recipe search</h1>
+<h1>Ingredient search</h1>
 <div style="margin-top: 20px; margin-bottom: 10px;">
-	<partial name="_RecipeFilter" model="new RecipeFilterModel()" />
+	<partial name="_IngredientFilter" model="new IngredientFilterModel()" />
 </div>
 
 <div id="tableWrapper">
@@ -28,13 +28,13 @@
 			});
 
 			$("body").on("click", "#deleteButton", function () {
-                if (confirm("Do you want to delete this Recipe?")) {
-                    var _recipe = {};
-                    _recipe.Id = $(this).prev().val();
-                    console.log(_recipe)
+                if (confirm("Do you want to delete this Ingredient?")) {
+                    var _ingredient = {};
+                    _ingredient.Id = $(this).prev().val();
+                    console.log(_ingredient)
                     $.ajax({type: "POST",
-                        url: "/Recipe/Delete",
-                        data: _recipe,
+                        url: "/Ingredient/Delete",
+                        data: _ingredient,
                         success: function (result) {
                             $("#tableWrapper").html(result);
                         }

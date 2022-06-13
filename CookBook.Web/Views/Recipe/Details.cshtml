@@ -1,0 +1,54 @@
+﻿@model CookBook.Model.Recipe
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+@if (Model != null)
+{
+	<div>
+		<h4>Ingredient</h4>
+		<hr />
+		<dl class="dl-horizontal">
+			<dt>
+				Title
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Title)
+			</dd>
+			<dt>
+				Author
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Author)
+			</dd>
+			<dt>
+				Difficulty
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Difficulty)
+			</dd>
+			<dt>
+				Minutes
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Minutes)
+			</dd>
+		</dl>
+
+		<div>
+			<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+		</div>
+
+	</div>
+
+}
+else
+{
+	<div class="alert alert-danger">
+		Ingredient doesn't exist under that ID.
+	</div>
+
+}

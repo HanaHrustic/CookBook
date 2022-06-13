@@ -3,6 +3,7 @@ using CookBook.Model;
 using CookBook.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Primitives;
 
 namespace CookBook.Web.Controllers
 {
@@ -28,6 +29,16 @@ namespace CookBook.Web.Controllers
             var model = recipeQuery.ToList();
             return View("Search", model);
         }
+
+        public IActionResult Details(int? id = null)
+        {
+            var recipe = this._dbContext.Recipes
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            return View(recipe);
+        }
+
         public IActionResult Explore()
         {
             return View();
@@ -64,6 +75,9 @@ namespace CookBook.Web.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Ingredients = this._dbContext.Ingredients.ToList();
+            ViewBag.Sizes = this._dbContext.Sizes.ToList();
+
             return View();
         }
 
@@ -102,6 +116,19 @@ namespace CookBook.Web.Controllers
 
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int Id)
+        {
+            Recipe recipe = this._dbContext.Recipes
+                .Where(recipe => recipe.Id.Equals(Id))
+                .First();
+
+            this._dbContext.Recipes.Remove(recipe);
+            this._dbContext.SaveChanges();
+
+            return RedirectToAction("Search");
         }
     }
 }

@@ -11,3 +11,18 @@
 		</form>
 	</div>
 </div>
+
+@section scripts{
+	<script>
+		$(function () {
+			$("#submitButton").click(function(){
+				$.ajax({type: "POST",
+					url: $('form').attr("action"),   
+					data: $('form').serialize(), 
+					success: function(result){
+						$("#tableWrapper").html(result);
+				}});
+			});
+		});
+	</script>
+}
