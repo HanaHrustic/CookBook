@@ -1,4 +1,5 @@
 ﻿using CookBook.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CookBook.DAL
 {
-    public class CookBookDbContext : DbContext
+    public class CookBookDbContext : IdentityDbContext<AppUser>
     {
         protected CookBookDbContext() { }
         public CookBookDbContext(DbContextOptions<CookBookDbContext> options) : base(options){
