@@ -100,7 +100,16 @@ namespace CookBook.Web.Controllers
 
             this._dbContext.SaveChanges();
 
-            return recipeToRecipeDTO(recipeToChange);
+            Recipe recipeFromDatabase = this._dbContext.Recipes
+                .Where(recipe => recipe.Id.Equals(id))
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Ingredient)
+                .Include(recipe => recipe.RecipeIngredients)
+                .ThenInclude(recipeIngredient => recipeIngredient.Size)
+                .Include(recipe => recipe.Steps)
+                .First();
+
+            return recipeToRecipeDTO(recipeFromDatabase);
         }
 
 

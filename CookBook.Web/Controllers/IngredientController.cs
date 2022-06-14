@@ -1,6 +1,8 @@
 ﻿using CookBook.DAL;
 using CookBook.Model;
 using CookBook.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CookBook.Web.Controllers
@@ -8,12 +10,22 @@ namespace CookBook.Web.Controllers
     public class IngredientController : Controller
     {
         private CookBookDbContext _dbContext;
+        private UserManager<AppUser> _userManager;
 
-        public IngredientController(CookBookDbContext dbContext)
+        public IngredientController(CookBookDbContext dbContext, UserManager<AppUser> userManager)
         {
             this._dbContext = dbContext;
+            this._userManager = userManager;
+        }
+        public string UserId
+        {
+            get
+            {
+                return this._userManager.GetUserId(base.User);
+            }
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var recipeQuery = this._dbContext.Ingredients.AsQueryable();
@@ -22,6 +34,7 @@ namespace CookBook.Web.Controllers
             return View("Search", model);
         }
 
+        [AllowAnonymous]
         public IActionResult Details(int? id = null)
         {
             var ingredient = this._dbContext.Ingredients
@@ -31,6 +44,7 @@ namespace CookBook.Web.Controllers
             return View(ingredient);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Search(IngredientFilterModel filter)
         {
             filter ??= new IngredientFilterModel();
@@ -46,20 +60,30 @@ namespace CookBook.Web.Controllers
             return PartialView("_IndexTable", model);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Create(Ingredient model)
         {
-            this._dbContext.Ingredients.Add(model);
-            this._dbContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                this._dbContext.Ingredients.Add(model);
+                this._dbContext.SaveChanges();            
+                return RedirectToAction(nameof(Index));
 
-            return RedirectToAction(nameof(Index));
+            }
+            var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+            return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(Edit))]
         public IActionResult Edit(int id)
         {
@@ -67,6 +91,7 @@ namespace CookBook.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ActionName(nameof(Edit))]
         public async Task<IActionResult> EditPost(Ingredient model)
@@ -75,10 +100,16 @@ namespace CookBook.Web.Controllers
 
             ingredient.Name = model.Name;
 
-            _dbContext.SaveChanges();
+            var ok = await this.TryUpdateModelAsync(ingredient);
+            if (ok)
+            {
+                _dbContext.SaveChanges();
+            }
+                
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Delete(int Id)
         {

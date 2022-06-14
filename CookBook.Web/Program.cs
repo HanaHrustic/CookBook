@@ -1,4 +1,6 @@
 using CookBook.DAL;
+using CookBook.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +8,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+});
+
 builder.Services.AddDbContext<CookBookDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("CookBookDbContext"),
             opt => opt.MigrationsAssembly("CookBook.DAL")));
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddRoleManager<RoleManager<IdentityRole>>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<CookBookDbContext>();
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -26,6 +42,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -36,5 +53,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

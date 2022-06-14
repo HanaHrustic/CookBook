@@ -18,7 +18,7 @@
 @section scripts{
 	<script>
 		$(function () {
-			$("#submitButton").click(function(){
+			$("#submitRecipeSearchButton").click(function(){
 				$.ajax({type: "POST",
 					url: $('form').attr("action"),   
 					data: $('form').serialize(), 
